@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\RajaOngkirController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,10 @@ Route::get('/categoryHeader', [CategoryController::class, 'categoryHeader'])->na
  */
 Route::get('/products', [ProductController::class, 'index'])->name('customer.product.index');
 Route::get('/product/{slug?}', [ProductController::class, 'show'])->name('customer.product.show');
+
+/**
+ * Route Raja Ongkir
+ */
+Route::get('/rajaongkir/provinces', [RajaOngkirController::class, 'getProvinces'])->name('customer.rajaongkir.getProvinces');
+Route::get('/rajaongkir/cities', [RajaOngkirController::class, 'getCities'])->name('customer.rajaongkir.getCities');
+Route::post('/rajaongkir/checkOngkir', [RajaOngkirController::class, 'checkOngkir'])->name('customer.rajaongkir.checkOngkir');
