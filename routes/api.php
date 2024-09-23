@@ -3,9 +3,11 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RajaOngkirController;
+use App\Http\Controllers\Api\SliderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/cart/totalWeight', [CartController::class, 'getCartTotalWeight'])->name('customer.cart.getCartTotalWeight');
     Route::post('/cart/remove', [CartController::class, 'removeCart'])->name('customer.cart.remove');
     Route::post('/cart/removeAll', [CartController::class, 'removeAllCart'])->name('customer.cart.removeAll');
+
+    /**
+     * Route Checkout
+     */
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 });
 
 /**
@@ -54,3 +61,13 @@ Route::get('/product/{slug?}', [ProductController::class, 'show'])->name('custom
 Route::get('/rajaongkir/provinces', [RajaOngkirController::class, 'getProvinces'])->name('customer.rajaongkir.getProvinces');
 Route::get('/rajaongkir/cities', [RajaOngkirController::class, 'getCities'])->name('customer.rajaongkir.getCities');
 Route::post('/rajaongkir/checkOngkir', [RajaOngkirController::class, 'checkOngkir'])->name('customer.rajaongkir.checkOngkir');
+
+/**
+ * Route notifikasi handler
+ */
+Route::post('/notificationHandler', [CheckoutController::class, 'notificationHandler'])->name('notificationHanlder');
+
+/**
+ * Route API Slider
+ */
+Route::get('/sliders', [SliderController::class, 'index'])->name('customer.slider.index');
