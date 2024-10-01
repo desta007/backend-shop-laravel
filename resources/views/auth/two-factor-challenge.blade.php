@@ -18,7 +18,7 @@
                             </div>
                         @endif
                         <div class="text-center">
-                            <h1 class="h5 text-gray-900 mb-3">TWO FACTOR CHALLANGE</h1>
+                            <h1 class="h5 text-gray-900 mb-3">TWO FACTOR CHALLENGE</h1>
                         </div>
 
                         <form method="POST" action="{{ url('/two-factor-challenge') }}">
